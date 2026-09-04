@@ -1,0 +1,45 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_header %}{% endblock %}
+{% block base_navigation %}{% endblock %}
+{% block base_offcanvas_navigation %}{% endblock %}
+
+{% block base_content %}
+    {% block page_account_register %}
+        {% sw_include '@Storefront/storefront/component/checkout-customizer/style.html.twig' %}
+
+        <div class="cc-register-amazon-wide">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-md-10 col-lg-8 col-xl-6 mx-auto">
+                        {% block page_account_register_header %}
+                            <div class="cc-register-logo">
+                                <a href="{{ path('frontend.home.page') }}">
+                                    {% sw_icon 'shopware' style { size: 'lg' } %}
+                                </a>
+                            </div>
+
+                            <h1 class="cc-register-title">
+                                {{ 'account.loginRegistrationHeader'|trans|sw_sanitize }}
+                            </h1>
+
+                            <p class="cc-register-subtitle">
+                                Erstelle dein Kundenkonto für einfaches Einkaufen
+                            </p>
+                        {% endblock %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-10 col-lg-8 col-xl-6 mx-auto">
+                        {% block page_account_register_container %}
+                            {% sw_include '@Storefront/storefront/component/account/register.html.twig' with {
+                                cardTitle: false
+                            } %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

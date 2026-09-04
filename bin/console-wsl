@@ -1,0 +1,49 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use Shopware\Core\Framework\Adapter\Kernel\KernelFactory;
+use Shopware\Core\Framework\Plugin\KernelPluginLoader\ComposerPluginLoader;
+use Shopware\Core\Framework\Plugin\KernelPluginLoader\DbalKernelPluginLoader;
+use Shopware\Core\Framework\Plugin\KernelPluginLoader\StaticKernelPluginLoader;
+use Shopware\Core\Kernel;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$input = new ArgvInput();
+$env = $input->getParameterOption(['--env', '-e'], $_SERVER['APP_ENV'] ?? $_ENV['APP_ENV'] ?? 'prod', true);
+$debug = ($_SERVER['APP_DEBUG'] ?? $_ENV['APP_DEBUG'] ?? ($env !== 'prod')) && !$input->hasParameterOption('--no-debug', true);
+
+$classLoader = require __DIR__ . '/../vendor/autoload.php';
+
+$pluginLoader = new StaticKernelPluginLoader($classLoader, null);
+
+if ($input->getFirstArgument() === 'system:install') {
+    $_SERVER['INSTALL'] = true;
+}
+
+if (!isset($_SERVER['INSTALL']) && !isset($_ENV['INSTALL'])) {
+    $useComposerPluginLoader = (bool) ($_SERVER['COMPOSER_PLUGIN_LOADER'] ?? $_ENV['COMPOSER_PLUGIN_LOADER'] ?? false);
+    if ($useComposerPluginLoader) {
+        $pluginLoader = new ComposerPluginLoader($classLoader, null);
+    } elseif (trim((string) ($_SERVER['DATABASE_URL'] ?? $_ENV['DATABASE_URL'] ?? '')) !== '') {
+        $pluginLoader = new DbalKernelPluginLoader($classLoader, null, Kernel::getConnection());
+    }
+}
+
+$kernel = KernelFactory::create(
+    environment: $env,
+    debug: (bool) $debug,
+    classLoader: $classLoader,
+    pluginLoader: $pluginLoader,
+);
+
+$application = new Application($kernel);
+$kernel->boot();
+$application->setName('Shopware');
+$application->setVersion($kernel->getContainer()->getParameter('kernel.shopware_version'));
+
+exit($application->run($input));

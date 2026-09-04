@@ -1,0 +1,29 @@
+services:
+  shopware:
+    image: dockware/shopware-essentials:latest
+    container_name: shopware6-dockware
+    ports:
+      - "8080:80"
+      - "3307:3306"
+      - "9998:9998"
+    volumes:
+      - ./:/var/www/html
+      - shopware-mysql:/var/lib/mysql
+    environment:
+      TZ: Europe/Berlin
+      PHP_VERSION: "8.3"
+      APP_ENV: dev
+      APP_URL: http://localhost:8080
+      SHOP_DOMAIN: localhost:8080
+      XDEBUG_ENABLED: "0"
+      APACHE_DOCROOT: /var/www/html/public
+      WEB_DOCUMENT_ROOT: /var/www/html/public
+      SW_TASKS_ENABLED: "1"
+      DATABASE_URL: mysql://root:root@127.0.0.1:3306/shopware?serverVersion=8.0&charset=utf8mb4
+      MAILER_DSN: smtp://127.0.0.1:1025
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+volumes:
+  shopware-mysql:

@@ -1,0 +1,19 @@
+{
+  "name": "custom/checkout-customizer",
+  "description": "Einfache Storefront-Checkout-Anpassungen (Warenkorb + Bestellbestaetigung).",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "version": "1.0.0",
+  "autoload": {
+    "psr-4": {
+      "CheckoutCustomizer\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "CheckoutCustomizer\\CheckoutCustomizer",
+    "label": {
+      "de-DE": "Checkout Customizer",
+      "en-GB": "Checkout Customizer"
+    }
+  }
+}

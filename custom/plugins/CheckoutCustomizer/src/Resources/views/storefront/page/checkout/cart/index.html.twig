@@ -1,0 +1,20 @@
+{% sw_extends '@Storefront/storefront/page/checkout/cart/index.html.twig' %}
+
+{% block page_checkout_container %}
+    {% sw_include '@Storefront/storefront/component/checkout-customizer/style.html.twig' %}
+
+    <div class="cc-checkout-shell cc-checkout-shell--cart">
+        <div class="alert alert-info mt-2 mb-4" role="status">
+            <strong>Checkout-Hinweis:</strong>
+            Dein Warenkorb wird im Shopware-Storefront verarbeitet.
+        </div>
+
+        {{ parent() }}
+    </div>
+{% endblock %}
+
+{% block page_checkout_cart_header %}
+    {{ parent() }}
+
+    <small class="d-block mb-4 text-muted">Standard-Checkout (Storefront) ist aktiv.</small>
+{% endblock %}

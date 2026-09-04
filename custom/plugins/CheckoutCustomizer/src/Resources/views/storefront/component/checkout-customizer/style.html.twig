@@ -1,0 +1,269 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap');
+
+    /* Amazon-style register page */
+    .cc-register-amazon-wide {
+        --cc-bg: #fff;
+        --cc-surface: #fff;
+        --cc-ink: #111;
+        --cc-muted: #555;
+        --cc-accent: #febd69;
+        --cc-accent-hover: #f3a847;
+        --cc-border: #ddd;
+        --cc-blue: #232f3e;
+        font-family: 'Sora', Arial, sans-serif;
+        color: var(--cc-ink);
+        background: var(--cc-bg);
+        padding: 3rem 1rem 2rem;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    .cc-register-amazon-wide .cc-register-logo {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .cc-register-amazon-wide .cc-register-logo svg {
+        width: 140px;
+        height: auto;
+    }
+
+    .cc-register-amazon-wide .cc-register-title {
+        font-size: 2rem;
+        font-weight: 300;
+        margin-bottom: 0.25rem;
+        color: var(--cc-blue);
+        text-align: center;
+    }
+
+    .cc-register-amazon-wide .cc-register-subtitle {
+        font-size: 0.95rem;
+        color: var(--cc-muted);
+        text-align: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--cc-border);
+    }
+
+    .cc-register-amazon-wide .cc-register-card {
+        border: 1px solid var(--cc-border);
+        border-radius: 8px;
+        background: var(--cc-surface);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    .cc-register-amazon-wide .cc-register-card .card-body {
+        padding: 2rem 2.5rem;
+    }
+
+    .cc-register-amazon-wide .form-label {
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: var(--cc-ink);
+    }
+
+    .cc-register-amazon-wide .form-control {
+        border: 1px solid var(--cc-border);
+        border-radius: 4px;
+        min-height: 42px;
+        font-size: 0.95rem;
+    }
+
+    .cc-register-amazon-wide .form-control:focus {
+        border-color: var(--cc-accent-hover);
+        box-shadow: 0 0 0 2px rgba(254, 191, 111, 0.5);
+    }
+
+    .cc-register-amazon-wide .register-submit {
+        margin-top: 1.5rem;
+    }
+
+    .cc-register-amazon-wide .btn-primary {
+        background: var(--cc-accent);
+        border-color: #a98527;
+        border-radius: 4px;
+        color: #111;
+        font-size: 0.9rem;
+        min-height: 42px;
+        font-weight: 600;
+        width: 100%;
+        padding: 0.6rem 1rem;
+    }
+
+    .cc-register-amazon-wide .btn-primary:hover {
+        background: var(--cc-accent-hover);
+        border-color: #8c6e1f;
+    }
+
+    .cc-register-amazon-wide .register-required-info {
+        font-size: 0.8rem;
+        color: var(--cc-muted);
+        margin-bottom: 1rem;
+    }
+
+    .cc-register-amazon-wide .card-title {
+        font-size: 1.4rem;
+        font-weight: 400;
+        margin-bottom: 1.5rem;
+        color: var(--cc-blue);
+    }
+
+    .cc-register-amazon-wide .register-form fieldset {
+        margin-top: 1.25rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--cc-border);
+    }
+
+    .cc-register-amazon-wide .register-form fieldset:first-of-type {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: 0;
+    }
+
+    @media (max-width: 767.98px) {
+        .cc-register-amazon-wide {
+            padding: 2rem 0.75rem 1.5rem;
+        }
+
+        .cc-register-amazon-wide .cc-register-card .card-body {
+            padding: 1.5rem 1.25rem;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .cc-register-amazon-wide .container-fluid {
+            max-width: 1400px;
+        }
+    }
+
+    /* Original checkout shell styles */
+    .cc-checkout-shell {
+        --cc-bg: #f7f3eb;
+        --cc-bg-2: #fffdf7;
+        --cc-surface: rgba(255, 255, 255, 0.88);
+        --cc-ink: #1f2723;
+        --cc-muted: #5b6a62;
+        --cc-accent: #e7702f;
+        --cc-accent-soft: #f6bd86;
+        --cc-border: rgba(31, 39, 35, 0.12);
+        position: relative;
+        margin: -1rem -0.65rem 0;
+        padding: 1.8rem 0.65rem 2rem;
+        border-radius: 1.25rem;
+        background:
+            radial-gradient(circle at 8% 12%, rgba(246, 189, 134, 0.44), transparent 28%),
+            radial-gradient(circle at 90% 2%, rgba(231, 112, 47, 0.16), transparent 28%),
+            linear-gradient(140deg, var(--cc-bg), var(--cc-bg-2));
+        overflow: hidden;
+    }
+
+    .cc-checkout-shell::before {
+        content: '';
+        position: absolute;
+        inset: -140px auto auto -90px;
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        background: rgba(231, 112, 47, 0.12);
+        filter: blur(1px);
+        pointer-events: none;
+    }
+
+    .cc-checkout-shell .checkout,
+    .cc-checkout-shell .checkout-container,
+    .cc-checkout-shell .checkout-main,
+    .cc-checkout-shell .checkout-aside,
+    .cc-checkout-shell .checkout-aside-container {
+        position: relative;
+        z-index: 1;
+    }
+
+    .cc-checkout-shell .checkout {
+        font-family: 'Sora', 'Arial Narrow', sans-serif;
+        color: var(--cc-ink);
+    }
+
+    .cc-checkout-shell .cart-main-header,
+    .cc-checkout-shell .confirm-main-header,
+    .cc-checkout-shell .checkout-aside-summary-header,
+    .cc-checkout-shell .card-title {
+        font-family: 'Fraunces', Georgia, serif;
+        letter-spacing: 0.01em;
+        color: var(--cc-ink);
+    }
+
+    .cc-checkout-shell .checkout-container {
+        gap: 1.1rem;
+    }
+
+    .cc-checkout-shell .checkout-main,
+    .cc-checkout-shell .checkout-aside-container,
+    .cc-checkout-shell .checkout-additional {
+        background: var(--cc-surface);
+        border: 1px solid var(--cc-border);
+        border-radius: 1rem;
+        padding: 1rem;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 18px 36px rgba(31, 39, 35, 0.08);
+    }
+
+    .cc-checkout-shell .checkout-aside,
+    .cc-checkout-shell .checkout-additional {
+        margin-top: 0;
+    }
+
+    .cc-checkout-shell .card,
+    .cc-checkout-shell .summary-list,
+    .cc-checkout-shell .checkout-aside-action {
+        background: #fff;
+        border: 1px solid var(--cc-border);
+        border-radius: 0.85rem;
+        box-shadow: 0 10px 22px rgba(31, 39, 35, 0.07);
+    }
+
+    .cc-checkout-shell .alert {
+        border-radius: 0.85rem;
+        border: 1px solid rgba(231, 112, 47, 0.3);
+        background: linear-gradient(120deg, rgba(246, 189, 134, 0.26), rgba(255, 255, 255, 0.94));
+        color: var(--cc-ink);
+    }
+
+    .cc-checkout-shell .btn-primary,
+    .cc-checkout-shell .btn-outline-primary {
+        background: linear-gradient(135deg, var(--cc-accent), #e95f4c);
+        border-color: transparent;
+        border-radius: 999px;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .cc-checkout-shell .btn-primary:hover,
+    .cc-checkout-shell .btn-outline-primary:hover {
+        background: linear-gradient(135deg, #d96025, #d94836);
+        color: #fff;
+    }
+
+    .cc-checkout-shell .btn-link,
+    .cc-checkout-shell .btn-link-inline {
+        color: var(--cc-accent);
+        text-decoration-thickness: 0.08em;
+    }
+
+    .cc-checkout-shell .form-control,
+    .cc-checkout-shell .form-select {
+        border: 1px solid rgba(91, 106, 98, 0.25);
+        border-radius: 0.65rem;
+    }
+
+    .cc-checkout-shell .text-muted,
+    .cc-checkout-shell .text-dark-emphasis {
+        color: var(--cc-muted) !important;
+    }
+
+    @media (max-width: 575.98px) {
+        .cc-register-amazon-style {
+            padding: 1rem 0.5rem;
+        }
+    }
+</style>

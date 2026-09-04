@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="CheckoutCustomizer\Service\EmailService" public="true">
+            <argument type="service" id="http_client"/>
+            <argument>%checkout_customizer.api_url%</argument>
+            <argument>%checkout_customizer.api_key%</argument>
+        </service>
+
+        <service id="CheckoutCustomizer\Controller\EmailController" public="true">
+            <argument type="service" id="CheckoutCustomizer\Service\EmailService"/>
+            <tag name="shopware.controller"/>
+        </service>
+    </services>
+
+    <parameters>
+        <parameter key="checkout_customizer.api_url">https://dein-mail-api.de
+        <parameter key="checkout_customizer.api_key">DEIN_API_KEY
+    </parameters>
+</container>
